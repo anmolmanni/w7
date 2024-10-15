@@ -1,7 +1,10 @@
 name: puppeteer and lighthouse
 
 on:
-  workflow_dispatch:
+  workflow_run:
+    workflows: ["Deploy Next.js site to Pages"]
+    types:
+    -complete
 
 jobs:
   run-script:
