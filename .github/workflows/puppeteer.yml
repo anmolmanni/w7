@@ -1,0 +1,21 @@
+name: Manual Trigger Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Script
+        run: node scripts/main.mjs
+      - name: Archive Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: script-artifacts
+          path: auto_*  # Change to the actual path of the artifacts you want to archive
